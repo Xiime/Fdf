@@ -6,7 +6,7 @@
 /*   By: mtrudel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 11:32:06 by mtrudel           #+#    #+#             */
-/*   Updated: 2017/09/15 13:47:05 by mtrudel          ###   ########.fr       */
+/*   Updated: 2017/10/02 17:28:55 by mtrudel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	print_image(t_env *env)
 {
-	mlx_key_hook(env->win->fen, get_key, env);
+	mlx_hook(env->win->fen, 2, (1L << 0), get_key, env);
+	mlx_hook(env->win->fen, 3, (1L << 1), release_key, env);
 	mlx_loop_hook(env->win->mlx, event_key, env);
 	mlx_loop(env->win->mlx);
 }

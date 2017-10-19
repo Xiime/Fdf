@@ -6,7 +6,7 @@
 /*   By: mtrudel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 10:18:20 by mtrudel           #+#    #+#             */
-/*   Updated: 2017/09/21 14:36:03 by mtrudel          ###   ########.fr       */
+/*   Updated: 2017/10/02 17:31:28 by mtrudel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	get_key_plus(t_env *env, int key_code)
 int			get_key(int key_code, t_env *env)
 {
 	if (key_code == 53)
-		exit(1);
+		exit(EXIT_SUCCESS);
 	if (key_code == 69 && env->coo->zoom < 100)
 		env->coo->zoom += 1;
-	if (key_code == 78 && env->coo->zoom >= 0)
+	if (key_code == 78 && env->coo->zoom > 1)
 		env->coo->zoom -= 1;
 	if (key_code == 124)
 		env->coo->offsetx += 10;
@@ -47,6 +47,11 @@ int			get_key(int key_code, t_env *env)
 		env->bre->col = (int)0x0000FF;
 	get_key_plus(env, key_code);
 	return (0);
+}
+
+int			release_key(void)
+{
+	return (1);
 }
 
 int			event_key(t_env *env)

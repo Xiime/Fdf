@@ -6,7 +6,7 @@
 /*   By: mtrudel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 14:58:48 by mtrudel           #+#    #+#             */
-/*   Updated: 2017/09/21 15:24:07 by mtrudel          ###   ########.fr       */
+/*   Updated: 2017/09/29 09:27:15 by mtrudel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	ft_checkchar(int fd, t_coordonnees *coo)
 		if (coo->inf[1] == 0)
 			coo->inf[0] = coo->x;
 		else if (coo->inf[0] > coo->x)
-			coo->inf[0] = coo->x;
+			return (-1);
 		coo->inf[1]++;
 	}
 	if (line)
@@ -86,7 +86,9 @@ int			ft_parsing(char *str, t_coordonnees *coo)
 	if ((ft_checkchar(fd, coo)) == -1)
 		return (ft_usage(5));
 	if (coo->inf[0] == 0)
-		return (ft_usage(3));
+		return (ft_usage(6));
+	if (coo->inf[0] == 1 && coo->inf[1] == 1)
+		return (ft_usage(6));
 	ft_fill_struct(coo, str);
 	close(fd);
 	return (1);

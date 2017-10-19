@@ -6,13 +6,13 @@
 /*   By: mtrudel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 14:53:46 by mtrudel           #+#    #+#             */
-/*   Updated: 2017/09/21 15:20:27 by mtrudel          ###   ########.fr       */
+/*   Updated: 2017/09/28 16:28:55 by mtrudel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include <mlx.h>
+# include "./minilibx/mlx.h"
 # include "./libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
@@ -78,6 +78,7 @@ void				print_image(t_env *env);
 int					ft_parsing(char *str, t_coordonnees *coo);
 int					ft_usage(int code_err);
 int					get_key(int key_code, t_env *env);
+int					release_key(void);
 int					event_key(t_env *env);
 int					init_env(t_env *env);
 void				mlx_init_img(t_env *env);

@@ -6,7 +6,7 @@
 #    By: mtrudel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/13 09:15:16 by mtrudel           #+#    #+#              #
-#    Updated: 2017/09/21 20:17:26 by mtrudel          ###   ########.fr        #
+#    Updated: 2017/09/26 13:47:22 by mtrudel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = fdf
 
 # ---------------------------------------------------------------------------- #
 
-LIB = -L minilibx -lmlx -framework OpenGL -framework AppKit -L ./libft/ -lft
+LIB = -L ./minilibx/ -lmlx -framework OpenGL -framework AppKit -L ./libft/ -lft
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -44,12 +44,14 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@make -C libft/
+	@make -C minilibx/
 	@gcc $(CFLAGS) -c -I $(SRCS)
 	@gcc $(CFLAGS) $(OBJECTS) -o $(NAME) $(LIB)
 	@echo "$(GREEN)[✓] FDF: READY!$(NC)"
 
 clean:
 	@make clean -C libft/
+	@make clean -C minilibx/
 	@rm -f $(OBJECTS)
 	@echo "$(RED)[-] FDF: SUPPRESSION DES FICHIERS OBJETS.$(NC)"
 
